@@ -362,17 +362,3 @@ type settable[T any] interface {
 	Set(string)
 }
 
-func calSettable[T any, S settable[T]]() T {
-	var v T
-
-	S(&v).Set("Hello world!")
-
-	return v
-}
-
-func main() {
-	s := calSettable[String]()
-	//   ^^^^^^^^^^^^^^^^^^^^^
-	//   Here it shows "Cannot use *T as the type settable[T]"
-	println(s)
-}
