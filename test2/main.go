@@ -25,3 +25,4 @@ func main() {
 	//   Here it shows "Cannot use *T as the type settable[T]"
 	println(s)
 }
+dsfsd
