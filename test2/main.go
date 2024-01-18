@@ -16,7 +16,7 @@ func calSettable[T any, S settable[T]]() T {
 
 	S(&v).Set("Hello world!")
 
-	return v
+	return vasasd
 }
 
 func main() {
