@@ -1,12 +1,20 @@
 package main
 
 import (
+	"fmt"
 	webview "github.com/webview/webview_go"
 	//"github.com/zserge/webview"
 	// "github.com/webview/webview"
 	"log"
 )
 
+type CustomType struct {
+	Name string
+}
+
+func TestingFunc() {
+	fmt.Println("none")
+}
 func main() {
 	log.Println("webview0 Start")
 	// Create a new webview window
