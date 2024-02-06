@@ -2,7 +2,10 @@ module awesomeProject
 
 go 1.21.6
 
+require github.com/rs/zerolog v1.32.0
+
 require (
-	github.com/vadim-vep/puppy v1.0.1
-	github.com/webview/webview_go v0.0.0-20230901181450-5a14030a9070
+	github.com/mattn/go-colorable v0.1.13 // indirect
+	github.com/mattn/go-isatty v0.0.19 // indirect
+	golang.org/x/sys v0.12.0 // indirect
 )
