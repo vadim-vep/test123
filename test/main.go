@@ -2,25 +2,29 @@ package main
 
 import (
 	"fmt"
-	"github.com/rs/zerolog"
-	"github.com/rs/zerolog/log"
+	"github.com/ArtisanCloud/PowerWeChat/v3/src/officialAccount"
+	"os"
 )
 
 func main() {
-	// UNIX Time is faster and smaller than most timestamps
-	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
+	OfficialAccountApp, err := officialAccount.NewOfficialAccount(&officialAccount.UserConfig{
+		AppID:     os.Getenv("AppId"), // 公众号、小程序的appid
+		Secret:    os.Getenv("AppSecret"),
+		Token:     os.Getenv("Token"),
+		AESKey:    os.Getenv("AESKey"),
+		Log:       officialAccount.Log{Level: "debug"},
+		HttpDebug: true,
+		Debug:     true})
 
-	log.Print("hello world")
+	code := "TestCode"
 
-	log.Logger = log.With().Caller().Logger()
-	log.Info().Msg("hello world")
-	// Output: {"time":1516134303,"level":"debug","message":"hello world"}
-	url := "/Users/vadym.veprytskyi/GolandProjects/awesomeProject/test/main.go"
-	line := "19"
-	fmt.Printf("%v:%v", url, line)
+	UserInterface, err := OfficialAccountApp.OAuth.UserFromCode(code)
 
-	//test
-	//test2
-	//test3//test3//test3//test3//test3
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(UserInterface)
 
 }
